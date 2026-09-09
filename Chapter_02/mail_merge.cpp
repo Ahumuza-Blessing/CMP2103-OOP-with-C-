@@ -28,3 +28,58 @@
 
 // John Doe
 // Registra
+#include <iostream>
+#include <string>
+#include <ctime>
+using namespace std;
+
+int main() {
+    string firstName, lastName, course, academicYear;
+
+    // Get details from user
+    cout << "Enter First Name: ";
+    cin >> firstName;
+    cout << "Enter Last Name: ";
+    cin >> lastName;
+    cin.ignore(); // Clear newline buffer
+    
+    cout << "Enter the Course Applied : ";
+    getline(cin, course);
+    cout << "Enter Academic Year : ";
+    getline(cin, academicYear);
+
+    // Get current date automatically
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    
+    // Formatting variables for day, month, year
+    int day = ltm->tm_mday;
+    int month = 1 + ltm->tm_mon;
+    int year = 1900 + ltm->tm_year;
+
+    // Print out the official letter
+
+    cout << "                MAKERERE UNIVERSITY                   \n";
+    cout << "         Office of the Academic Registrar             \n";
+    cout << "         P.O. Box 7062, Kampala, Uganda               \n";
+    cout << "Date: " << day << "/" << month << "/" << year << "\n\n";
+    
+    cout << "To: " << firstName << " " << lastName << ",\n\n";
+    
+    cout << "Dear " << firstName << ",\n\n";
+    cout << "CONGRATULATIONS! I am pleased to inform you that you \n"
+         << "have been offered admission to Makerere University for the \n"
+         << "academic year " << academicYear << ".\n\n";
+         
+    cout << "You have been admitted to the following programme:\n"
+         << ">> " << course << " <<\n\n";
+         
+    cout << "Please note that registration will begin prior to the \n"
+         << "commencement of the semester. Bring your original academic \n"
+         << "documents for verification.\n\n";
+         
+    cout << "We wish you success in your academic journey.\n\n";
+    cout << "Yours Sincerely,\n\n";
+    cout << "Academic Registrar\n";
+    
+    return 0;
